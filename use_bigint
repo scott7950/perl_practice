@@ -1,0 +1,36 @@
+use bigint;
+#use Math::BigInt;
+
+my $logical_shift_n_bits = 8;
+my @data = ("0xABCDEF567578312312AB", "0xABCDEF567578312312AB");
+my @bdata;
+foreach (@data) {
+  push @bdata, Math::BigInt->new($_);
+}
+# $a = 1234545345345345345234523452345234512345453453453453452345234523452345;
+# $x = Math::BigInt->new($str);         # defaults to 0
+# $x = Math::BigInt->new('0x123');      # from hexadecimal
+# $x = Math::BigInt->new('0b101');      # from binary
+# $x = Math::BigInt->from_hex('cafe');  # from hexadecimal
+# $x = Math::BigInt->from_oct('377');   # from octal
+# $x = Math::BigInt->from_bin('1101');  # from binary
+# $x = Math::BigInt->bzero();           # create a +0
+# $x = Math::BigInt->bone();            # create a +1
+# $x = Math::BigInt->bone('-');         # create a -1
+# $x = Math::BigInt->binf();            # create a +inf
+# $x = Math::BigInt->binf('-');         # create a -inf
+# $x = Math::BigInt->bnan();            # create a Not-A-Number
+# $x = Math::BigInt->bpi();             # returns pi
+
+foreach (@bdata) {
+  print $_->as_hex."\n";
+  print $_->as_oct."\n";
+  print "$_\n";
+  print "\n";
+}
+print "\n";
+
+foreach (@bdata) {
+  $_ = $_ >> $logical_shift_n_bits;
+  print $_->as_hex."\n";
+}
